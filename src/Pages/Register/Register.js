@@ -1,50 +1,52 @@
 import React, { useContext, useState } from 'react';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { FaGoogle } from 'react-icons/fa';
-import { useLocation, useNavigate } from 'react-router-dom';
-import setAuthToken from '../../api/auth';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
-import './Login.css';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
-  const { login, providerLogin, setLoading } = useContext(AuthContext);
-
-  const [error, setError] = useState(null);
+const Register = () => {
   const [btnLoading, setBtnLoading] = useState(false);
-
-  const location = useLocation();
+  const [error, setError] = useState(null);
+  const { createUser, providerLogin, trigger, setTrigger, updateUserProfile } =
+    useContext(AuthContext);
   const navigate = useNavigate();
-  const from = location.state?.from?.pathName || '/';
 
-  //   Providers
+  //    Providers
   const googleProvider = new GoogleAuthProvider();
+
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
+    updateUserProfile(profile)
+      .then(() => {
+        setTrigger(!trigger);
+        navigate('/');
+      })
+      .catch((error) => console.error(error));
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     setBtnLoading(true);
     setError(null);
-
     const form = event.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
 
-    login(email, password)
+    createUser(email, password)
       .then((result) => {
         const user = result.user;
-        const currentUser = {
-          email: user.email,
-        };
-        setAuthToken(currentUser);
+        console.log(user);
+        form.reset();
+        handleUpdateUserProfile(name, photoURL);
         console.log(result);
-        navigate(from, { replace: true });
       })
-      .catch((error) => {
-        console.error(error);
-        setError(error.message);
-      })
+      .catch((e) => setError(e.message))
       .finally(() => {
-        setLoading(false);
         setBtnLoading(false);
       });
   };
@@ -52,7 +54,7 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
       .then(() => {
-        navigate(from, { replace: true });
+        navigate('/');
       })
       .catch((error) => console.log(error));
   };
@@ -67,6 +69,32 @@ const Login = () => {
           </p>
 
           <form onSubmit={handleSubmit} className="my-5">
+            <div className="mb-6">
+              <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 ">
+                Your name
+              </label>
+              <input
+                name="name"
+                type="text"
+                id="name"
+                className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-500 block w-full p-2.5"
+                required
+              />
+            </div>
+
+            <div className="mb-6">
+              <label htmlFor="photoURL" className="block mb-2 text-sm font-medium text-gray-900 ">
+                Your Photo URL
+              </label>
+              <input
+                name="photoURL"
+                type="text"
+                id="photoURL"
+                className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-500 block w-full p-2.5"
+                required
+              />
+            </div>
+
             <div className="mb-6">
               <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">
                 Your email
@@ -114,7 +142,7 @@ const Login = () => {
                   </svg>
                 </div>
               ) : (
-                'Log In'
+                'Sign Up'
               )}
             </button>
           </form>
@@ -130,4 +158,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

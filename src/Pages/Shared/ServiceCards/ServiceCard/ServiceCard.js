@@ -3,9 +3,8 @@ import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import './ServiceCard.css';
 
-const ServiceCard = ({ service }) => {
+const ServiceCard = ({ keytest, service }) => {
   const { _id, image, name, description, rating, price } = service;
-
   const stars = [...Array(Math.floor(rating)).keys()];
   const halfStar = rating - Math.floor(rating) !== 0;
 

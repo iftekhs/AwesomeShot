@@ -11,7 +11,7 @@ const Header = () => {
     setBurgerMenuOpen(!burgerMenuOpen);
   };
 
-  const headerAbsoluteRoutes = ['/', '/login'];
+  const headerAbsoluteRoutes = ['/', '/login', '/register'];
   const shouldBeAbsolute = headerAbsoluteRoutes.includes(location.pathname);
 
   return (
