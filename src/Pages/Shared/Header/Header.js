@@ -10,7 +10,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-slate-900 p-5 text-white">
+    <header className="header p-5 text-white">
       <nav className="container mx-auto flex items-center justify-between">
         <Link to="/">
           <div className="logo-container flex items-center justify-center gap-1">

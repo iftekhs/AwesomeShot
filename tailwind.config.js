@@ -6,7 +6,7 @@ module.exports = {
       colors: {
         cdark: '#070600',
         cgray: '#F7F7FF',
-        cred: '#EA526F',
+        cred: '#DA4167',
         cpurple: '#8C52FF',
       },
     },

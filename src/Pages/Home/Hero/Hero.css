@@ -1,0 +1,13 @@
+.hero {
+  position: relative;
+  background: linear-gradient(rgba(0, 0, 0, 0.909), rgba(0, 0, 0, 0.504)),
+    url('../../../images/hero.jpg');
+  background-size: contain;
+}
+.hero-content {
+  min-height: 90vh;
+}
+
+.home-service img {
+  width: 400px;
+}

@@ -1,0 +1,30 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Hero.css';
+
+const Hero = () => {
+  return (
+    <section className="hero px-2">
+      <div className="hero-content flex flex-col text-white container mx-auto items-center justify-center">
+        <h1 className="text-center lh-80 text-6xl font-bold">
+          Premium PhotoShoots <br />
+          For Wild, Wedding, Aesthetic <br />
+          And More
+        </h1>
+
+        <p className="text-center mt-5 text-lg font-semibold">
+          An intuitive WordPress theme with easy to use Editor and prebuilt websites are designed
+          firm <br /> Creative & Photography business
+        </p>
+
+        <Link
+          to="/"
+          className="text-1xl bg-blue-600 hover:bg-blue-800 transition-all py-3 px-8 mt-5 rounded-full">
+          Get Started
+        </Link>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
