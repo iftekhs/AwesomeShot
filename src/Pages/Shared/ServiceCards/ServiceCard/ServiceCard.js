@@ -1,10 +1,9 @@
 import React from 'react';
-import './HomeService.css';
-
-import { Link } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import './ServiceCard.css';
 
-const HomeService = ({ service }) => {
+const ServiceCard = ({ service }) => {
   const { _id, image, name, description, rating, price } = service;
   return (
     <div className="home-service flex flex-col">
@@ -34,4 +33,4 @@ const HomeService = ({ service }) => {
   );
 };
 
-export default HomeService;
+export default ServiceCard;
