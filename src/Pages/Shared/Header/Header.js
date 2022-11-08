@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { GoThreeBars } from 'react-icons/go';
 import './Header.css';
 
 const Header = () => {
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
+  const location = useLocation();
+
   const toggleBurgerMenu = () => {
     setBurgerMenuOpen(!burgerMenuOpen);
   };
 
+  const isHome = location.pathname === '/';
+
   return (
-    <header className="header p-5 text-white">
+    <header
+      className={`header ${isHome ? 'absolute w-full top-0' : 'bg-cdark'} p-5 py-8 text-white`}>
       <nav className="container mx-auto flex items-center justify-between">
         <Link to="/">
           <div className="logo-container flex items-center justify-center gap-1">
@@ -25,7 +30,7 @@ const Header = () => {
                 ? 'text-1xl header-link font-semibold active-header-link'
                 : 'text-1xl header-link font-semibold'
             }
-            to="/courses/00">
+            to="/services">
             Services
           </NavLink>
           <NavLink
@@ -34,7 +39,7 @@ const Header = () => {
                 ? 'text-1xl header-link font-semibold active-header-link'
                 : 'text-1xl header-link font-semibold'
             }
-            to="/courses/00">
+            to="/blog">
             Blog
           </NavLink>
         </div>
@@ -67,7 +72,7 @@ const Header = () => {
               className={({ isActive }) =>
                 isActive ? 'text-1xl header-link active-header-link' : 'text-1xl header-link'
               }
-              to="/courses/00">
+              to="/services">
               Courses
             </NavLink>
           </li>

@@ -1,10 +1,14 @@
 import React from 'react';
-import { FaStar } from 'react-icons/fa';
+import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import './ServiceCard.css';
 
 const ServiceCard = ({ service }) => {
   const { _id, image, name, description, rating, price } = service;
+
+  const stars = [...Array(Math.floor(rating)).keys()];
+  const halfStar = rating - Math.floor(rating) !== 0;
+
   return (
     <div className="home-service flex flex-col">
       <img className="mb-6 rounded-lg" src={image} alt="" />
@@ -13,11 +17,10 @@ const ServiceCard = ({ service }) => {
         {description.length > 100 ? description.substring(0, 100) + '...' : description}
       </p>
       <div className="flex gap-2 items-center text-1xl text-amber-500 mb-8">
-        <FaStar></FaStar>
-        <FaStar></FaStar>
-        <FaStar></FaStar>
-        <FaStar></FaStar>
-        <FaStar></FaStar>
+        {stars.map((star) => (
+          <FaStar></FaStar>
+        ))}
+        {halfStar && <FaStarHalfAlt></FaStarHalfAlt>}
       </div>
       <div className="-ml-1 mb-10">
         <p className="inline py-3 px-5 rounded-full bg-cgray font-semibold">Price: ${price}</p>

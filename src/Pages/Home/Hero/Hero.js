@@ -8,13 +8,13 @@ const Hero = () => {
       <div className="hero-content flex flex-col text-white container mx-auto items-center justify-center">
         <h1 className="text-center lh-80 text-6xl font-bold">
           Premium PhotoShoots <br />
-          For Wild, Wedding, Aesthetic <br />
+          For Product, Wedding, Aesthetic <br />
           And More
         </h1>
 
         <p className="text-center mt-5 text-lg font-semibold">
-          An intuitive WordPress theme with easy to use Editor and prebuilt websites are designed
-          firm <br /> Creative & Photography business
+          I am specialize in premium photo shoots <br /> whether it's Product Photography, weddings
+          or just an aesthetic shoot - I can do it all!
         </p>
 
         <Link
