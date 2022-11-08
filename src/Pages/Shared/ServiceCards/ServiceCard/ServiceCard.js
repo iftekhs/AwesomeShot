@@ -22,10 +22,10 @@ const ServiceCard = ({ service }) => {
         ))}
         {halfStar && <FaStarHalfAlt></FaStarHalfAlt>}
       </div>
-      <div className="-ml-1 mb-10">
+      <div className=" mb-10">
         <p className="inline py-3 px-5 rounded-full bg-cgray font-semibold">Price: ${price}</p>
       </div>
-      <div className="-ml-1 mt-auto">
+      <div className=" mt-auto">
         <Link
           to={`/service/${_id}`}
           className="py-3 px-5 bg-blue-600 transition-all hover:bg-blue-800 text-white rounded-full">

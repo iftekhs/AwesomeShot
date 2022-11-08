@@ -17,7 +17,7 @@ const HomeServices = ({ services }) => {
           <Link
             to="/services"
             className="flex items-center gap-2 py-3 px-5 bg-blue-600 transition-all hover:bg-blue-800 text-white rounded-full">
-            View All <FaArrowRight></FaArrowRight>
+            See All <FaArrowRight></FaArrowRight>
           </Link>
         </div>
       </div>

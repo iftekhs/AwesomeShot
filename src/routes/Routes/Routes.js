@@ -16,7 +16,7 @@ const routes = createBrowserRouter([
       {
         path: '/services',
         element: <Services></Services>,
-        loader: () => fetch(`${process.env.REACT_APP_API_ROOT}/services?size=3`),
+        loader: () => fetch(`${process.env.REACT_APP_API_ROOT}/services`),
       },
     ],
   },
