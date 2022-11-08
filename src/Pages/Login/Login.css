@@ -1,0 +1,13 @@
+.auth-container {
+  min-height: 100vh;
+  position: relative;
+  background: linear-gradient(rgba(0, 0, 0, 0.909), rgba(0, 0, 0, 0.504)),
+    url('../../images/hero.jpg');
+  background-size: contain;
+}
+
+.auth-content {
+  width: 600px;
+  max-width: 600px;
+  padding: 40px;
+}

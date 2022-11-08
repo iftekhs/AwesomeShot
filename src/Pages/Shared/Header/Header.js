@@ -11,11 +11,14 @@ const Header = () => {
     setBurgerMenuOpen(!burgerMenuOpen);
   };
 
-  const isHome = location.pathname === '/';
+  const headerAbsoluteRoutes = ['/', '/login'];
+  const shouldBeAbsolute = headerAbsoluteRoutes.includes(location.pathname);
 
   return (
     <header
-      className={`header ${isHome ? 'absolute w-full top-0' : 'bg-cdark'} p-5 py-8 text-white`}>
+      className={`header ${
+        shouldBeAbsolute ? 'absolute w-full top-0' : 'bg-cdark'
+      } p-5 py-8 text-white`}>
       <nav className="container mx-auto flex items-center justify-between">
         <Link to="/">
           <div className="logo-container flex items-center justify-center gap-1">
