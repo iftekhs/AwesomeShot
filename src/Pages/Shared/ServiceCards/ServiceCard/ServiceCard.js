@@ -17,7 +17,7 @@ const ServiceCard = ({ keytest, service }) => {
       </p>
       <div className="flex gap-2 items-center text-1xl text-amber-500 mb-8">
         {stars.map((star) => (
-          <FaStar></FaStar>
+          <FaStar key={_id + star}></FaStar>
         ))}
         {halfStar && <FaStarHalfAlt></FaStarHalfAlt>}
       </div>
