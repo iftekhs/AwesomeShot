@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
+import { useLocation, useNavigate } from 'react-router-dom';
+import setAuthToken from '../../api/auth';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import './Login.css';
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
 
+  const location = useLocation();
+  //   const navigate = useNavigate();
+  //   const from = location.state?.from?.pathName || '/';
 
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    login(email, password)
+      .then((result) => {
+        // const user = result.user;
+        // const currentUser = {
+        //   email: user.email,
+        // };
+        // setAuthToken(currentUser);
+        console.log(result);
+        // navigate(from, { replace: true });
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <section>
       <div className="auth-container flex items-center justify-center">
@@ -14,29 +39,29 @@ const Login = () => {
             Use your email or another service to continue <br /> with AwesomeShot
           </p>
 
-          <form className="my-5">
-            <div class="mb-6">
-              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">
+          <form onSubmit={handleLogin} className="my-5">
+            <div className="mb-6">
+              <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">
                 Your email
               </label>
               <input
                 name="email"
                 type="email"
                 id="email"
-                class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-500 block w-full p-2.5"
+                className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-500 block w-full p-2.5"
                 placeholder="example@email.com"
                 required
               />
             </div>
-            <div class="mb-6">
-              <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">
+            <div className="mb-6">
+              <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 ">
                 Your password
               </label>
               <input
                 name="password"
                 type="password"
                 id="password"
-                class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-500 block w-full p-2.5"
+                className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-500 block w-full p-2.5"
                 required
               />
             </div>
