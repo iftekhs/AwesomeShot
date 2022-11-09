@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Main from '../../Layouts/Main';
 import AddService from '../../Pages/AddService/AddService';
 import Blog from '../../Pages/Blog/Blog';
+import EditReview from '../../Pages/EditReview/EditReview';
 import Home from '../../Pages/Home/Home';
 import Login from '../../Pages/Login/Login';
 import MyReviews from '../../Pages/MyReviews/MyReviews';
@@ -57,6 +58,11 @@ const routes = createBrowserRouter([
       {
         path: '/blog/',
         element: <Blog></Blog>,
+      },
+      {
+        path: '/service/edit/:id',
+        element: <EditReview></EditReview>,
+        loader: ({ params }) => fetch(`${process.env.REACT_APP_API_ROOT}/review/${params.id}`),
       },
     ],
   },
