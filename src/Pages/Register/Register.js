@@ -61,7 +61,7 @@ const Register = () => {
 
   return (
     <section>
-      <div className="auth-container flex items-center justify-center">
+      <div className="auth-container flex items-center justify-center px-2">
         <div className="auth-content bg-white rounded-lg px-4">
           <h2 className="text-center text-3xl mt-10 font-bold">Welcome to AwesomeShot</h2>
           <p className="text-center mt-5 text-gray-700">

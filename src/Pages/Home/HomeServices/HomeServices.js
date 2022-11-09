@@ -6,11 +6,11 @@ import './HomeServices.css';
 
 const HomeServices = ({ services }) => {
   return (
-    <section className="home-services-section py-8 px-2">
+    <section className="mb-20 home-services-section py-8 px-2">
       <div className="container mx-auto">
         <p className="text-center text-lg text-blue-600 mb-5 font-semibold">MY TOP SERVICES</p>
         <h2 className="lh-60 text-center text-5xl font-bold">
-          My top rated services that satisfied 1,200+ <br /> customers Around the world
+          My top rated services that satisfied 1,200+ <br /> customers Around the world.
         </h2>
         <ServiceCards services={services}></ServiceCards>
         <div className="container flex items-center justify-center mx-auto mt-16">

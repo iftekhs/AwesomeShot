@@ -21,106 +21,6 @@ const Header = () => {
     logOut();
   };
 
-  const burderMenuItems = (
-    <>
-      <ul>
-        <li className="mb-4">
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? 'text-1xl header-link font-semibold active-header-link'
-                : 'text-1xl header-link font-semibold'
-            }
-            to="/services">
-            Courses
-          </NavLink>
-        </li>
-
-        <li className="mb-4">
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? 'text-1xl header-link font-semibold active-header-link'
-                : 'text-1xl header-link font-semibold'
-            }
-            to="/blog">
-            Blog
-          </NavLink>
-        </li>
-
-        {user && user.uid && (
-          <>
-            <li className="mb-4">
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? 'text-1xl header-link font-semibold active-header-link'
-                    : 'text-1xl header-link font-semibold'
-                }
-                to="/review">
-                My Reviews
-              </NavLink>
-            </li>
-
-            <li className="mb-4">
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? 'text-1xl header-link font-semibold active-header-link'
-                    : 'text-1xl header-link font-semibold'
-                }
-                to="/add-service">
-                Add Service
-              </NavLink>
-            </li>
-          </>
-        )}
-
-        {user && user.uid ? (
-          <>
-            <li className="mb-4">
-              <Link to="/profile">
-                <div className="relative">
-                  <img
-                    className="user-profile-pic w-10 h-10 rounded-full"
-                    src={user.photoURL ? user.photoURL : Avatar}
-                    alt="user"
-                    height="60"
-                  />
-                  <div
-                    className={`text-center hidden tooltip absolute left-0 mt-2 z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm  dark:bg-gray-700`}>
-                    {user.displayName}
-                  </div>
-                </div>
-              </Link>
-            </li>
-
-            <li className="mb-4">
-              <button
-                onClick={signOut}
-                className="btn border border-white text-white hover:bg-white hover:text-cdark">
-                Sign Out
-              </button>
-            </li>
-          </>
-        ) : (
-          <>
-            <li className="mb-6">
-              <Link to="/login" className="btn bg-cpurple text-white hover:bg-violet-600">
-                Log In
-              </Link>
-            </li>
-            <li>
-              <Link to="/register" className="btn bg-cpurple text-white hover:bg-violet-600">
-                Sign Up
-              </Link>
-            </li>
-          </>
-        )}
-      </ul>
-    </>
-  );
-
   return (
     <header
       className={`header ${
@@ -162,7 +62,7 @@ const Header = () => {
                     ? 'text-1xl header-link font-semibold active-header-link'
                     : 'text-1xl header-link font-semibold'
                 }
-                to="/review">
+                to="/reviews">
                 My Reviews
               </NavLink>
               <NavLink
@@ -181,7 +81,7 @@ const Header = () => {
         <div className="hidden lg:flex items-center justify-center gap-2">
           {user && user.uid ? (
             <>
-              <Link to="/profile">
+              <div>
                 <div className="relative">
                   <img
                     className="user-profile-pic w-10 h-10 rounded-full"
@@ -189,12 +89,8 @@ const Header = () => {
                     alt="user"
                     height="60"
                   />
-                  <div
-                    className={`text-center hidden tooltip absolute left-0 mt-2 z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm  dark:bg-gray-700`}>
-                    {user.displayName}
-                  </div>
                 </div>
-              </Link>
+              </div>
 
               <button
                 onClick={signOut}
@@ -231,7 +127,97 @@ const Header = () => {
         className={`container ${
           !burgerMenuOpen && 'hidden'
         } bg-cdark p-5 rounded-lg mx-auto py-3  mt-2`}>
-        {burderMenuItems}
+        <ul>
+          <li className="mb-4">
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? 'text-1xl header-link font-semibold active-header-link'
+                  : 'text-1xl header-link font-semibold'
+              }
+              to="/services">
+              Courses
+            </NavLink>
+          </li>
+
+          <li className="mb-4">
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? 'text-1xl header-link font-semibold active-header-link'
+                  : 'text-1xl header-link font-semibold'
+              }
+              to="/blog">
+              Blog
+            </NavLink>
+          </li>
+
+          {user && user.uid && (
+            <>
+              <li className="mb-4">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'text-1xl header-link font-semibold active-header-link'
+                      : 'text-1xl header-link font-semibold'
+                  }
+                  to="/reviews">
+                  My Reviews
+                </NavLink>
+              </li>
+
+              <li className="mb-4">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'text-1xl header-link font-semibold active-header-link'
+                      : 'text-1xl header-link font-semibold'
+                  }
+                  to="/add-service">
+                  Add Service
+                </NavLink>
+              </li>
+            </>
+          )}
+
+          {user && user.uid ? (
+            <>
+              <li className="mb-4">
+                <div>
+                  <div className="relative">
+                    <img
+                      className="user-profile-pic w-10 h-10 rounded-full"
+                      src={user.photoURL ? user.photoURL : Avatar}
+                      alt="user"
+                      height="60"
+                    />
+                  </div>
+                </div>
+              </li>
+
+              <li className="mb-4">
+                <button
+                  onClick={signOut}
+                  className="btn border border-white text-white hover:bg-white hover:text-cdark">
+                  Sign Out
+                </button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="mb-6">
+                <Link to="/login" className="btn bg-cpurple text-white hover:bg-violet-600">
+                  Log In
+                </Link>
+              </li>
+              <li>
+                <Link to="/register" className="btn bg-cpurple text-white hover:bg-violet-600">
+                  Sign Up
+                </Link>
+              </li>
+            </>
+          )}
+        </ul>
       </div>
     </header>
   );
