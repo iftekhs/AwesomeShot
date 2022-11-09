@@ -28,32 +28,40 @@ const MyReviews = () => {
     <section className="py-8 px-2">
       <div className="container mx-auto">
         <h2 className="mb-3 text-2xl font-bold">All Reviews ({reviews.length})</h2>
-
-        <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
-          <table className="w-full text-sm text-left text-gray-500">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-              <tr>
-                <th scope="col" className="py-3 px-6">
-                  Created At
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  Review
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  Rating
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {reviews.map((review) => (
-                <ReviewRow key={review._id} review={review}></ReviewRow>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        {reviews.length > 0 ? (
+          <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
+            <table className="w-full text-sm text-left text-gray-500">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                  <th scope="col" className="py-3 px-6">
+                    Created At
+                  </th>
+                  <th scope="col" className="py-3 px-6">
+                    Service
+                  </th>
+                  <th scope="col" className="py-3 px-6">
+                    Review
+                  </th>
+                  <th scope="col" className="py-3 px-6">
+                    Rating
+                  </th>
+                  <th scope="col" className="py-3 px-6">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {reviews.map((review) => (
+                  <ReviewRow key={review._id} review={review}></ReviewRow>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="h-80 flex items-center justify-center">
+            <p className="text-4xl font-bold">No reviews were added</p>
+          </div>
+        )}
       </div>
     </section>
   );
