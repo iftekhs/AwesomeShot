@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import ReviewRow from './ReviewRow/ReviewRow';
 
 const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -18,7 +19,6 @@ const MyReviews = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         setReviews(data);
       })
       .catch((error) => console.log(error));
@@ -26,7 +26,35 @@ const MyReviews = () => {
 
   return (
     <section className="py-8 px-2">
-      <div className="container mx-auto">h</div>
+      <div className="container mx-auto">
+        <h2 className="mb-3 text-2xl font-bold">All Reviews ({reviews.length})</h2>
+
+        <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
+          <table className="w-full text-sm text-left text-gray-500">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+              <tr>
+                <th scope="col" className="py-3 px-6">
+                  Created At
+                </th>
+                <th scope="col" className="py-3 px-6">
+                  Review
+                </th>
+                <th scope="col" className="py-3 px-6">
+                  Rating
+                </th>
+                <th scope="col" className="py-3 px-6">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {reviews.map((review) => (
+                <ReviewRow key={review._id} review={review}></ReviewRow>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </section>
   );
 };
