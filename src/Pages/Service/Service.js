@@ -4,10 +4,13 @@ import useRating from '../../Hooks/useRating';
 import Reviews from './Reviews/Reviews';
 import './Service.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
+import useTitle from '../../Hooks/useTitle';
 
 const Service = () => {
   const service = useLoaderData();
   const { _id, image, name, description, rating, price } = service;
+
+  useTitle(name);
 
   const starsContent = useRating(_id, rating);
 

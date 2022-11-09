@@ -1,9 +1,12 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../Hooks/useTitle';
 import ServiceCards from '../Shared/ServiceCards/ServiceCards';
 
 const Services = () => {
   const services = useLoaderData();
+  useTitle('Services');
+
   return (
     <section>
       <div className="container mx-auto mt-10">

@@ -1,9 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
+import useTitle from '../../Hooks/useTitle';
 
 const AddService = () => {
   const [btnLoading, setBtnLoading] = useState(false);
+
+  useTitle('Add Service');
 
   const { logOut } = useContext(AuthContext);
 

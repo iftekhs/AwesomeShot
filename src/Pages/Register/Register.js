@@ -4,12 +4,15 @@ import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import setAuthToken from '../../api/auth';
+import useTitle from '../../Hooks/useTitle';
 
 const Register = () => {
   const [btnLoading, setBtnLoading] = useState(false);
   const [error, setError] = useState(null);
   const { createUser, providerLogin, trigger, setTrigger, updateUserProfile } =
     useContext(AuthContext);
+
+  useTitle('Register');
 
   const navigate = useNavigate();
 

@@ -5,9 +5,12 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import setAuthToken from '../../api/auth';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import './Login.css';
+import useTitle from '../../Hooks/useTitle';
 
 const Login = () => {
   const { login, providerLogin, setLoading } = useContext(AuthContext);
+
+  useTitle('Log in');
 
   const [error, setError] = useState(null);
   const [btnLoading, setBtnLoading] = useState(false);
