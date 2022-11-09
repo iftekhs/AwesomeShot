@@ -36,11 +36,9 @@ const Login = () => {
           email: user.email,
         };
         setAuthToken(currentUser);
-        console.log(result);
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.error(error);
         setError(error.message);
       })
       .finally(() => {

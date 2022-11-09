@@ -3,6 +3,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import setAuthToken from '../../api/auth';
 
 const Register = () => {
   const [btnLoading, setBtnLoading] = useState(false);
@@ -40,10 +41,12 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        const currentUser = {
+          email: user.email,
+        };
+        setAuthToken(currentUser);
         form.reset();
         handleUpdateUserProfile(name, photoURL);
-        console.log(result);
       })
       .catch((e) => setError(e.message))
       .finally(() => {
