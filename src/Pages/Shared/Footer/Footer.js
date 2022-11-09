@@ -8,13 +8,11 @@ const Footer = () => {
   return (
     <footer className="bg-cgray py-8">
       <div className="container mx-auto">
-        <footer className="dark:bg-gray-900">
+        <footer>
           <div className="grid grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">
-                Quick Links
-              </h2>
-              <ul className="text-gray-500 dark:text-gray-400">
+              <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase">Quick Links</h2>
+              <ul className="text-gray-500">
                 <li className="mb-4">
                   <Link to="/" className=" hover:underline">
                     Home
@@ -55,10 +53,8 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">
-                Help center
-              </h2>
-              <ul className="text-gray-500 dark:text-gray-400">
+              <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase">Help center</h2>
+              <ul className="text-gray-500">
                 <li className="mb-4">
                   <Link to="/" className="hover:underline">
                     Discord Server
@@ -82,10 +78,8 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">
-                Legal
-              </h2>
-              <ul className="text-gray-500 dark:text-gray-400">
+              <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase">Legal</h2>
+              <ul className="text-gray-500">
                 <li className="mb-4">
                   <Link to="/" className="hover:underline">
                     Privacy Policy
@@ -104,10 +98,8 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">
-                Download
-              </h2>
-              <ul className="text-gray-500 dark:text-gray-400">
+              <h2 className="mb-6 text-sm font-semibold text-gray-500 uppercase">Download</h2>
+              <ul className="text-gray-500">
                 <li className="mb-4">
                   <Link to="/" className="hover:underline">
                     iOS
@@ -131,12 +123,12 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div className="py-6 px-4 dark:bg-gray-700 md:flex md:items-center md:justify-between">
-            <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">
+          <div className="py-6 px-4  md:flex md:items-center md:justify-between">
+            <span className="text-sm text-gray-500 sm:text-center">
               © 2022 <Link to="/">AwesomeShot</Link>. All Rights Reserved.
             </span>
             <div className="flex mt-4 space-x-6 sm:justify-center md:mt-0">
-              <Link to="/" className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+              <Link to="/" className="text-gray-400 hover:text-gray-900">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path
                     fillRule="evenodd"
@@ -145,7 +137,7 @@ const Footer = () => {
                 </svg>
                 <span className="sr-only">Facebook page</span>
               </Link>
-              <Link to="/" className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+              <Link to="/" className="text-gray-400 hover:text-gray-900">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path
                     fillRule="evenodd"
@@ -154,13 +146,13 @@ const Footer = () => {
                 </svg>
                 <span className="sr-only">Instagram page</span>
               </Link>
-              <Link to="/" className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+              <Link to="/" className="text-gray-400 hover:text-gray-900">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
                 </svg>
                 <span className="sr-only">Twitter page</span>
               </Link>
-              <Link to="/" className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+              <Link to="/" className="text-gray-400 hover:text-gray-900">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path
                     fillRule="evenodd"
@@ -169,7 +161,7 @@ const Footer = () => {
                 </svg>
                 <span className="sr-only">GitHub account</span>
               </Link>
-              <Link to="/" className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+              <Link to="/" className="text-gray-400 hover:text-gray-900">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path
                     fillRule="evenodd"
@@ -188,22 +180,22 @@ const Footer = () => {
 
 export default Footer;
 
-// <div className="p-4  sm:p-6 dark:bg-gray-900">
+// <div className="p-4  sm:p-6 ">
 //           <div className="md:flex md:justify-between">
 //             <div className="mb-6 md:mb-0">
 //               <Link to="/" className="flex items-center">
 //                 <img src="/" className="mr-3 h-8" alt="AwesomeShot Logo" />
-//                 <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+//                 <span className="self-center text-2xl font-semibold whitespace-nowrap">
 //                   AwesomeShot
 //                 </span>
 //               </Link>
 //             </div>
 //             <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
 //               <div>
-//                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+//                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
 //                   Resources
 //                 </h2>
-//                 <ul className="text-gray-600 dark:text-gray-400">
+//                 <ul className="text-gray-600">
 //                   <li className="mb-4">
 //                     <Link to="/" className="hover:underline">
 //                       AwesomeShot
@@ -212,10 +204,10 @@ export default Footer;
 //                 </ul>
 //               </div>
 //               <div>
-//                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+//                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
 //                   Follow us
 //                 </h2>
-//                 <ul className="text-gray-600 dark:text-gray-400">
+//                 <ul className="text-gray-600">
 //                   <li className="mb-4">
 //                     <Link to="/" className="hover:underline ">
 //                       Github
@@ -229,10 +221,10 @@ export default Footer;
 //                 </ul>
 //               </div>
 //               <div>
-//                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+//                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
 //                   Legal
 //                 </h2>
-//                 <ul className="text-gray-600 dark:text-gray-400">
+//                 <ul className="text-gray-600">
 //                   <li className="mb-4">
 //                     <Link to="/" className="hover:underline">
 //                       Privacy Policy
@@ -247,9 +239,9 @@ export default Footer;
 //               </div>
 //             </div>
 //           </div>
-//           <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+//           <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 //           <div className="sm:flex sm:items-center sm:justify-between">
-//             <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+//             <span className="text-sm text-gray-500 sm:text-center">
 //               © 2022
 //               <Link to="/" className="hover:underline">
 //                 AwesomeShot
@@ -257,7 +249,7 @@ export default Footer;
 //               All Rights Reserved.
 //             </span>
 //             <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-//               <Link to="/" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+//               <Link to="/" className="text-gray-500 hover:text-gray-900">
 //                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 //                   <path
 //                     fillRule="evenodd"
@@ -266,7 +258,7 @@ export default Footer;
 //                 </svg>
 //                 <span className="sr-only">Facebook page</span>
 //               </Link>
-//               <Link to="/" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+//               <Link to="/" className="text-gray-500 hover:text-gray-900">
 //                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 //                   <path
 //                     fillRule="evenodd"
@@ -275,13 +267,13 @@ export default Footer;
 //                 </svg>
 //                 <span className="sr-only">Instagram page</span>
 //               </Link>
-//               <Link to="/" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+//               <Link to="/" className="text-gray-500 hover:text-gray-900">
 //                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 //                   <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
 //                 </svg>
 //                 <span className="sr-only">Twitter page</span>
 //               </Link>
-//               <Link to="/" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+//               <Link to="/" className="text-gray-500 hover:text-gray-900">
 //                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 //                   <path
 //                     fillRule="evenodd"
@@ -290,7 +282,7 @@ export default Footer;
 //                 </svg>
 //                 <span className="sr-only">GitHub account</span>
 //               </Link>
-//               <Link to="/" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+//               <Link to="/" className="text-gray-500 hover:text-gray-900">
 //                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 //                   <path
 //                     fillRule="evenodd"

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import AboutMe from './AboutMe/AboutMe';
 import Gallery from './Gallery/Gallery';
 import Hero from './Hero/Hero';
 import './Home.css';
@@ -12,6 +13,7 @@ const Home = () => {
       <Hero></Hero>
       <HomeServices services={services}></HomeServices>
       <Gallery></Gallery>
+      <AboutMe></AboutMe>
     </div>
   );
 };
