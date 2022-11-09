@@ -10,12 +10,13 @@ const Register = () => {
   const [error, setError] = useState(null);
   const { createUser, providerLogin, trigger, setTrigger, updateUserProfile } =
     useContext(AuthContext);
+
   const navigate = useNavigate();
 
   //    Providers
   const googleProvider = new GoogleAuthProvider();
 
-  const handleUpdateUserProfile = (name, photoURL) => {
+  const handleUpdateUserProfile = (name, photoURL, currentUser) => {
     const profile = {
       displayName: name,
       photoURL: photoURL,
@@ -23,7 +24,11 @@ const Register = () => {
     updateUserProfile(profile)
       .then(() => {
         setTrigger(!trigger);
-        navigate('/');
+        setAuthToken(currentUser)
+          .then(() => {
+            navigate('/');
+          })
+          .catch((error) => console.log(error));
       })
       .catch((error) => console.error(error));
   };
@@ -44,9 +49,8 @@ const Register = () => {
         const currentUser = {
           email: user.email,
         };
-        setAuthToken(currentUser);
         form.reset();
-        handleUpdateUserProfile(name, photoURL);
+        handleUpdateUserProfile(name, photoURL, currentUser);
       })
       .catch((e) => setError(e.message))
       .finally(() => {
@@ -56,8 +60,16 @@ const Register = () => {
 
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
-      .then(() => {
-        navigate('/');
+      .then((result) => {
+        const user = result.user;
+        const currentUser = {
+          email: user.email,
+        };
+        setAuthToken(currentUser)
+          .then(() => {
+            navigate('/');
+          })
+          .catch((error) => console.log(error));
       })
       .catch((error) => console.log(error));
   };

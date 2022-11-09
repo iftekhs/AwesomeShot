@@ -2,9 +2,11 @@ import { createBrowserRouter } from 'react-router-dom';
 import Main from '../../Layouts/Main';
 import Home from '../../Pages/Home/Home';
 import Login from '../../Pages/Login/Login';
+import MyReviews from '../../Pages/MyReviews/MyReviews';
 import Register from '../../Pages/Register/Register';
 import Service from '../../Pages/Service/Service';
 import Services from '../../Pages/Services/Services';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 const routes = createBrowserRouter([
   {
@@ -33,6 +35,14 @@ const routes = createBrowserRouter([
         path: '/services/:id',
         element: <Service></Service>,
         loader: ({ params }) => fetch(`${process.env.REACT_APP_API_ROOT}/services/${params.id}`),
+      },
+      {
+        path: '/reviews',
+        element: (
+          <PrivateRoute>
+            <MyReviews></MyReviews>
+          </PrivateRoute>
+        ),
       },
     ],
   },

@@ -1,6 +1,6 @@
-const setAuthToken = (user) => {
+const setAuthToken = (user, from) => {
   //get jwt token
-  fetch(`${process.env.REACT_APP_API_ROOT}/jwt`, {
+  return fetch(`${process.env.REACT_APP_API_ROOT}/jwt`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',

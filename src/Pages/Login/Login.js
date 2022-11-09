@@ -14,7 +14,7 @@ const Login = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from?.pathName || '/';
+  const from = location.state?.from?.pathname || '/';
 
   //   Providers
   const googleProvider = new GoogleAuthProvider();
@@ -35,8 +35,11 @@ const Login = () => {
         const currentUser = {
           email: user.email,
         };
-        setAuthToken(currentUser);
-        navigate(from, { replace: true });
+        setAuthToken(currentUser)
+          .then(() => {
+            navigate(from, { replace: true });
+          })
+          .catch((error) => console.log(error));
       })
       .catch((error) => {
         setError(error.message);
@@ -49,8 +52,16 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
-      .then(() => {
-        navigate(from, { replace: true });
+      .then((result) => {
+        const user = result.user;
+        const currentUser = {
+          email: user.email,
+        };
+        setAuthToken(currentUser)
+          .then(() => {
+            navigate(from, { replace: true });
+          })
+          .catch((error) => console.log(error));
       })
       .catch((error) => console.log(error));
   };
