@@ -25,9 +25,9 @@ const MyReviews = () => {
   }, [user, logOut]);
 
   return (
-    <div>
-      <h2>Reviews ({reviews.length})</h2>
-    </div>
+    <section className="py-8 px-2">
+      <div className="container mx-auto">h</div>
+    </section>
   );
 };
 

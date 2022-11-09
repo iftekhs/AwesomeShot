@@ -18,7 +18,7 @@ const Hero = () => {
         </p>
 
         <Link
-          to="/"
+          to="/services"
           className="text-1xl bg-blue-600 hover:bg-blue-800 transition-all py-3 px-8 mt-5 rounded-full">
           Get Started
         </Link>

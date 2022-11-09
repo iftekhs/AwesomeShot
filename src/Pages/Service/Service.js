@@ -1,9 +1,9 @@
 import React from 'react';
-import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
 import useRating from '../../Hooks/useRating';
 import Reviews from './Reviews/Reviews';
 import './Service.css';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const Service = () => {
   const service = useLoaderData();
@@ -12,10 +12,12 @@ const Service = () => {
   const starsContent = useRating(_id, rating);
 
   return (
-    <>
+    <PhotoProvider>
       <section className="py-8 px-2">
         <div className="flex flex-col items-center justify-center text-center container mx-auto">
-          <img className="service-img mb-5 rounded-lg" src={image} alt={name} />
+          <PhotoView key={_id} src={image}>
+            <img className="service-img mb-5 rounded-lg" src={image} alt={name} />
+          </PhotoView>
           <div className="flex gap-2 items-center text-1xl text-amber-500 mb-5">{starsContent}</div>
           <p className="mb-3 inline py-3 px-5 rounded-full bg-cgray font-semibold">
             Price: ${price}
@@ -27,7 +29,7 @@ const Service = () => {
         </div>
       </section>
       <Reviews serviceId={_id}></Reviews>
-    </>
+    </PhotoProvider>
   );
 };
 
