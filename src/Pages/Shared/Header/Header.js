@@ -4,6 +4,7 @@ import { GoThreeBars } from 'react-icons/go';
 import './Header.css';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import Avatar from '../../../images/avatar.svg';
+import logo from '../../../images/logo.svg';
 
 const Header = () => {
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
@@ -29,7 +30,7 @@ const Header = () => {
       <nav className="container mx-auto flex items-center justify-between">
         <Link to="/">
           <div className="logo-container flex items-center justify-center gap-1">
-            {/* <img className="logo" src={logo} height="30" alt="" /> */}
+            <img className="logo" src={logo} alt="" />
             <h4 className="text-4xl font-bold">AwesomeShot</h4>
           </div>
         </Link>
