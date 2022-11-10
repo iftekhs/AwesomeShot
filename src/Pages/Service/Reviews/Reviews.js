@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
 import Review from './Review/Review';
 
-const Reviews = ({ serviceId }) => {
+const Reviews = ({ serviceId, serviceName }) => {
   const { user, logOut } = useContext(AuthContext);
 
   const [btnLoading, setBtnLoading] = useState(false);
@@ -15,7 +15,7 @@ const Reviews = ({ serviceId }) => {
 
   const handleRedirect = () => {
     if (!user || !user.uid) {
-      return navigate(<Navigate to="/login" state={{ from: location }} replace></Navigate>);
+      return navigate(`/login?intended=${location.pathname}`);
     }
   };
 
@@ -35,11 +35,11 @@ const Reviews = ({ serviceId }) => {
     const review = {
       name,
       serviceId,
+      serviceName,
       email,
       userPhoto,
       text,
       rating,
-      createdAt: new Date(Date.now()),
     };
 
     fetch(`${process.env.REACT_APP_API_ROOT}/reviews`, {
@@ -145,11 +145,11 @@ const Reviews = ({ serviceId }) => {
         ) : (
           <>
             <p className="mb-5 text-1xl ">Please login to submit a review!</p>
-            <Link
-              to="/login"
+            <button
+              onClick={handleRedirect}
               className="py-2 px-5 bg-blue-600 transition-all hover:bg-blue-800 text-white rounded-full">
               Log in
-            </Link>
+            </button>
           </>
         )}
 

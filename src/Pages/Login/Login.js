@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { FaGoogle } from 'react-icons/fa';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import setAuthToken from '../../api/auth';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import './Login.css';
@@ -9,7 +9,8 @@ import useTitle from '../../Hooks/useTitle';
 
 const Login = () => {
   const { login, providerLogin, setLoading } = useContext(AuthContext);
-
+  const [query] = useSearchParams();
+  const intended = query.get('intended');
   useTitle('Log in');
 
   const [error, setError] = useState(null);
@@ -17,7 +18,11 @@ const Login = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from?.pathname || '/';
+  let from = location.state?.from?.pathname || '/';
+
+  if (intended) {
+    from = '/' + intended.substring(1, intended.length);
+  }
 
   //   Providers
   const googleProvider = new GoogleAuthProvider();
@@ -42,14 +47,16 @@ const Login = () => {
           .then(() => {
             navigate(from, { replace: true });
           })
-          .catch((error) => console.log(error));
+          .catch(console.error)
+          .finally(() => {
+            setBtnLoading(false);
+          });
       })
       .catch((error) => {
         setError(error.message);
       })
       .finally(() => {
         setLoading(false);
-        setBtnLoading(false);
       });
   };
 
@@ -64,9 +71,9 @@ const Login = () => {
           .then(() => {
             navigate(from, { replace: true });
           })
-          .catch((error) => console.log(error));
+          .catch(console.error);
       })
-      .catch((error) => console.log(error));
+      .catch(console.error);
   };
 
   return (
@@ -107,7 +114,9 @@ const Login = () => {
 
             <p className="mb-3 text-rose-500">{error}</p>
 
-            <button className="w-full transition-all bg-blue-600 hover:bg-blue-800 text-white py-3 px-5 rounded-lg">
+            <button
+              disabled={btnLoading}
+              className="w-full transition-all bg-blue-600 hover:bg-blue-800 text-white py-3 px-5 rounded-lg">
               {btnLoading ? (
                 <div className="flex items-center justify-center">
                   <svg

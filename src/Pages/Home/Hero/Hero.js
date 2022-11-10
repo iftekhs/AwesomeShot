@@ -6,13 +6,13 @@ const Hero = () => {
   return (
     <section className="hero px-2">
       <div className="hero-content flex flex-col text-white container mx-auto items-center justify-center">
-        <h1 className="text-center lh-80 text-6xl font-bold">
+        <h1 className="text-center md:lh-80 text-3xl md:text-6xl font-bold">
           Premium PhotoShoots <br />
           For Product, Wedding, Aesthetic <br />
           And More
         </h1>
 
-        <p className="text-center mt-5 text-lg font-semibold">
+        <p className="text-center mt-5 md:text-lg font-semibold">
           I am specialize in premium photo shoots <br /> whether it's Product Photography, weddings
           or just an aesthetic shoot - I can do it all!
         </p>

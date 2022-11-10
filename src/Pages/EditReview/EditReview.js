@@ -2,10 +2,13 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../Hooks/useTitle';
 
 const EditReview = () => {
   const [btnLoading, setBtnLoading] = useState(false);
   const review = useLoaderData();
+
+  useTitle('Edit Review');
 
   const { _id, text, rating } = review;
   const { logOut } = useContext(AuthContext);
@@ -43,7 +46,6 @@ const EditReview = () => {
         if (data.modifiedCount > 0) {
           toast.success('Successfully updated the review!');
         }
-        console.log(data);
       })
       .catch(() => toast.error("Oop's something went very wrong!"))
       .finally(() => {

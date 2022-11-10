@@ -31,9 +31,15 @@ const Register = () => {
           .then(() => {
             navigate('/');
           })
-          .catch((error) => console.log(error));
+          .catch(console.error)
+          .finally(() => {
+            setBtnLoading(false);
+          });
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .finally(() => {
+        setBtnLoading(false);
+      });
   };
 
   const handleSubmit = (event) => {
@@ -55,10 +61,7 @@ const Register = () => {
         form.reset();
         handleUpdateUserProfile(name, photoURL, currentUser);
       })
-      .catch((e) => setError(e.message))
-      .finally(() => {
-        setBtnLoading(false);
-      });
+      .catch((e) => setError(e.message));
   };
 
   const handleGoogleSignIn = () => {
@@ -72,9 +75,9 @@ const Register = () => {
           .then(() => {
             navigate('/');
           })
-          .catch((error) => console.log(error));
+          .catch(console.error);
       })
-      .catch((error) => console.log(error));
+      .catch(console.error);
   };
 
   return (
@@ -141,7 +144,9 @@ const Register = () => {
 
             <p className="mb-3 text-rose-500">{error}</p>
 
-            <button className="w-full transition-all bg-blue-600 hover:bg-blue-800 text-white py-3 px-5 rounded-lg">
+            <button
+              disabled={btnLoading}
+              className="w-full transition-all bg-blue-600 hover:bg-blue-800 text-white py-3 px-5 rounded-lg">
               {btnLoading ? (
                 <div className="flex items-center justify-center">
                   <svg

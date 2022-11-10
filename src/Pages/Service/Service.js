@@ -3,7 +3,6 @@ import { useLoaderData } from 'react-router-dom';
 import useRating from '../../Hooks/useRating';
 import Reviews from './Reviews/Reviews';
 import './Service.css';
-import { PhotoProvider, PhotoView } from 'react-photo-view';
 import useTitle from '../../Hooks/useTitle';
 
 const Service = () => {
@@ -15,12 +14,11 @@ const Service = () => {
   const starsContent = useRating(_id, rating);
 
   return (
-    <PhotoProvider>
+    <>
       <section className="py-8 px-2">
         <div className="flex flex-col items-center justify-center text-center container mx-auto">
-          <PhotoView key={_id} src={image}>
-            <img className="service-img mb-5 rounded-lg" src={image} alt={name} />
-          </PhotoView>
+          <img className="service-img mb-5 rounded-lg" src={image} alt={name} />
+
           <div className="flex gap-2 items-center text-1xl text-amber-500 mb-5">{starsContent}</div>
           <p className="mb-3 inline py-3 px-5 rounded-full bg-cgray font-semibold">
             Price: ${price}
@@ -31,8 +29,8 @@ const Service = () => {
           </div>
         </div>
       </section>
-      <Reviews serviceId={_id}></Reviews>
-    </PhotoProvider>
+      <Reviews serviceId={_id} serviceName={name}></Reviews>
+    </>
   );
 };
 

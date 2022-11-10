@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle';
 import ReviewRow from './ReviewRow/ReviewRow';
+import toast from 'react-hot-toast';
 
 const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -24,8 +25,30 @@ const MyReviews = () => {
       .then((data) => {
         setReviews(data);
       })
-      .catch((error) => console.log(error));
+      .catch(console.error);
   }, [user, logOut]);
+
+  const handleDelete = (_id) => {
+    const proceed = window.confirm('Are you sure, you want to delete this?');
+    if (proceed) {
+      fetch(`${process.env.REACT_APP_API_ROOT}/reviews/${_id}`, {
+        headers: {
+          'content-type': 'application/json',
+          authorization: `Bearer ${localStorage.getItem('awesomeshot-token')}`,
+        },
+        method: 'DELETE',
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            toast.success('Successfully deleted the review!');
+            const remaining = reviews.filter((odr) => odr._id !== _id);
+            setReviews(remaining);
+          }
+        })
+        .catch(() => toast.error("Oop's something went very wrong!"));
+    }
+  };
 
   return (
     <section className="py-8 px-2">
@@ -55,7 +78,10 @@ const MyReviews = () => {
               </thead>
               <tbody>
                 {reviews.map((review) => (
-                  <ReviewRow key={review._id} review={review}></ReviewRow>
+                  <ReviewRow
+                    key={review._id}
+                    review={review}
+                    handleDelete={handleDelete}></ReviewRow>
                 ))}
               </tbody>
             </table>

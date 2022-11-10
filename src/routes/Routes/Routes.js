@@ -27,15 +27,15 @@ const routes = createBrowserRouter([
         loader: () => fetch(`${process.env.REACT_APP_API_ROOT}/services`),
       },
       {
-        path: '/login',
+        path: '/login', // done
         element: <Login></Login>,
       },
       {
-        path: '/register',
+        path: '/register', // done
         element: <Register></Register>,
       },
       {
-        path: '/services/:id',
+        path: '/services/:id', // done
         element: <Service></Service>,
         loader: ({ params }) => fetch(`${process.env.REACT_APP_API_ROOT}/services/${params.id}`),
       },

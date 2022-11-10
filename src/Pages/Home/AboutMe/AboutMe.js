@@ -59,7 +59,7 @@ const AboutMe = () => {
             photographer@email.com.
           </p>
           <h2 className="mb-10 lh-60 text-center text-5xl font-bold">My Skills</h2>
-          <div className="flex justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-4">
             {skills.map((skill) => (
               <div
                 key={skill._id}

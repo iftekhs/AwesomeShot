@@ -31,7 +31,7 @@ const Header = () => {
         <Link to="/">
           <div className="logo-container flex items-center justify-center gap-1">
             <img className="logo" src={logo} alt="" />
-            <h4 className="text-4xl font-bold">AwesomeShot</h4>
+            <h4 className="text-2xl md:text-4xl font-bold">AwesomeShot</h4>
           </div>
         </Link>
 
@@ -137,7 +137,7 @@ const Header = () => {
                   : 'text-1xl header-link font-semibold'
               }
               to="/services">
-              Courses
+              Services
             </NavLink>
           </li>
 
@@ -207,12 +207,12 @@ const Header = () => {
           ) : (
             <>
               <li className="mb-6">
-                <Link to="/login" className="btn bg-cpurple text-white hover:bg-violet-600">
+                <Link to="/login" className="btn border border-white text-white hover:bg-white hover:text-cdark">
                   Log In
                 </Link>
               </li>
               <li>
-                <Link to="/register" className="btn bg-cpurple text-white hover:bg-violet-600">
+                <Link to="/register" className="btn border border-white text-white hover:bg-white hover:text-cdark">
                   Sign Up
                 </Link>
               </li>

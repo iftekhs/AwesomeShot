@@ -6,6 +6,12 @@
   background-size: contain;
 }
 
+@media (max-width: 500px) {
+  .auth-container {
+    min-height: 150vh;
+  }
+}
+
 .auth-content {
   width: 600px;
   max-width: 600px;
